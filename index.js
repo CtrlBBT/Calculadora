@@ -1,3 +1,4 @@
+// Chama a função prompt-sync
 const prompt = require('prompt-sync')();
 
 // Função principal da calculadora
