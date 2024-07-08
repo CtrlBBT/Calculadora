@@ -1,22 +1,40 @@
 const prompt = require('prompt-sync')();
 
-let num1 = parseFloat(prompt("Digite o primeiro número:"));
-let num2 = parseFloat(prompt("Digite o segundo número:"));
-let conta = prompt("Qual conta iremos realizar? Digite o Número correspondente ao cálculo:\n\ 1. Adição\n\ 2. Subtração\n\ 3. Multiplicação\n\ 4. Divisão\n\ 5. Porcentagem");
+// Função principal da calculadora
+function calcular(num1, num2, operacao) {
+    num1 = parseFloat(num1);
+    num2 = parseFloat(num2);
 
-if (!isNaN(num1) && !isNaN(num2)) {
-      if (conta === 1) {
-        const soma = require('./functions/fcAdicao')
-    } if (conta === 2) {
-        const subtracao = require('./functions/fcSubtracao')
-    } if (conta === 3) {
-        const multiplicacao = require('./functions/fcMultiplicacao')
-    } if (conta === 4) {
-        const divisao = require('./functions/fcDivisao')
-    } if (conta === 5) {
-        const porcentagem = require('./functions/fcPorcentagem')
+    switch (operacao) {
+        case '+':
+            return num1 + num2;
+        case '-':
+            return num1 - num2;
+        case '*':
+            return num1 * num2;
+        case '/':
+            if (num2 === 0) {
+                return 'Erro: Divisão por zero';
+            } else {
+                return num1 / num2;
+            }
+        case '%':
+            return (num1 * num2) / 100;
+        default:
+            return 'Operação inválida';
     }
-
-} else {
-    console.log("Por favor, digite números válidos para realizar o cálculo.");
 }
+
+// Solicitar entrada do usuário
+let numero1 = prompt("Digite o primeiro número:");
+let numero2 = prompt("Digite o segundo número:");
+
+// Solicitar operação desejada
+let operacao = prompt("Digite a operação desejada (+, -, *, /, %):");
+
+// Realizar o cálculo e exibir o resultado
+let resultado = calcular(numero1, numero2, operacao);
+
+
+// Mostrar o resultado do cálculo
+console.log(`Resultado: ${resultado}`);
